@@ -10,14 +10,10 @@ export default class ReadPokemon {
   }
 
   async readAll() {
-    return this.db.select().from(this.table).orderBy(this.orderParam, "desc");
+    return this.db.select("*").from(this.table);
   }
 
   async readByName(name: string) {
-    return this.db
-      .select()
-      .from(this.table)
-      .where(this.db.raw(`name like "%${name}%"`))
-      .orderBy(this.orderParam, "desc");
+    return this.db.select("*").from(this.table).where("name", name);
   }
 }

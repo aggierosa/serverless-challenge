@@ -9,5 +9,5 @@ export async function up(knex): Promise<any> {
 }
 
 export async function down(knex): Promise<any> {
-  return knex.schema.dropTable("test_setup");
+  return knex.schema.dropTable("pokemons");
 }

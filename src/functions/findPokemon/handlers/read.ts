@@ -1,26 +1,23 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import ReadPokemon from "../../../model/pokemons/readPoke";
 import { formatJSONResponse } from "../../../libs/api-gateway";
 import { middyfy } from "../../../libs/lambda";
-import CreatePokemon from "../../../model/pokemons/insertPoke";
-import { getPoke } from "../components/pokeApi";
 import { dbConnection } from "../../../model/database";
 
-export const creating = middyfy(
+export const getting = middyfy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
       const pokename: any = event.pathParameters;
 
       const betterPokename = pokename.name;
 
-      const foundPokemon: any = await getPoke(betterPokename);
+      const readPoke = new ReadPokemon(await dbConnection());
 
-      const creation = new CreatePokemon(await dbConnection());
-
-      await creation.create(foundPokemon);
+      const foundPokemon = await readPoke.readByName(betterPokename);
 
       return formatJSONResponse({
         status: 200,
-        message: "Created",
+        message: foundPokemon,
       });
     } catch (e) {
       return formatJSONResponse({

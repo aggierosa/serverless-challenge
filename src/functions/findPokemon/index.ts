@@ -10,7 +10,14 @@ export const createPoke = formatRoute(
 
 export const getPokemon = formatRoute(
   handlerPath(__dirname),
-  "pokeApi.getPoke",
+  "read.getting",
   "get",
   "get/pokemon/{name}"
+);
+
+export const getAllPokemon = formatRoute(
+  handlerPath(__dirname),
+  "list.getting",
+  "get",
+  "get/pokemon"
 );
