@@ -2,16 +2,16 @@ import { otrsConnectionDB } from "../shared/secrets";
 
 export async function dbConnection() {
   try {
-    const parseAuth = await otrsConnectionDB();
+    // const parseAuth = await otrsConnectionDB();
 
     return require("knex")({
-      client: "mysql",
+      client: "pg",
       connection: {
-        host: parseAuth.host,
-        user: parseAuth.username,
-        password: parseAuth.password,
-        database: parseAuth.dbname,
-        port: parseAuth.port,
+        host: "localhost",
+        user: "Win10",
+        password: "agnes1ana2",
+        database: "serverless",
+        port: 5432,
       },
     });
   } catch (err) {

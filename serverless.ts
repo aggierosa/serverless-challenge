@@ -1,12 +1,12 @@
 import type { AWS } from "@serverless/typescript";
 import * as dotenv from "dotenv";
 
-import { read } from "@functions/example";
+import { createPoke, getPokemon } from "@functions/findPokemon";
 
 dotenv.config({ path: __dirname + "/.env.development" });
 
 const serverlessConfiguration: AWS = {
-  service: process.env.API_NAME,
+  service: "process.env.API_NAME",
   useDotenv: true,
   frameworkVersion: "3",
   plugins: [
@@ -28,7 +28,7 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
     },
   },
-  functions: { read },
+  functions: { createPoke, getPokemon },
   package: {
     individually: true,
     excludeDevDependencies: true,
