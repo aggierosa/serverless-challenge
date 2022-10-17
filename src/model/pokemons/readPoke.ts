@@ -14,6 +14,6 @@ export default class ReadPokemon {
   }
 
   async readByName(name: string) {
-    return this.db.select("*").from(this.table).where("name", name);
+    return this.db.select().from(this.table).where("name", name);
   }
 }

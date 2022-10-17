@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 
 import { createPoke, getPokemon, getAllPokemon } from "@functions/findPokemon";
 
-dotenv.config({ path: __dirname + "/.env.development" });
+dotenv.config({ path: __dirname + "/.env" });
 
 const serverlessConfiguration: AWS = {
   service: "serverless-challenge",
@@ -32,17 +32,11 @@ const serverlessConfiguration: AWS = {
   package: {
     individually: true,
     excludeDevDependencies: true,
-    patterns: [
-      "!.git/**",
-      "!.vscode/**",
-      "!.test/**",
-      "!.env.development",
-      "!.env.production",
-    ],
+    patterns: ["!.git/**", "!.vscode/**", "!.test/**", "!.env", "!.env"],
   },
   custom: {
     dotenv: {
-      path: "./.env.development",
+      path: "./.env",
     },
     webpack: {
       webpackConfig: "./webpack.config.js",

@@ -4,9 +4,9 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      database: "serverless",
-      user: "Win10",
-      password: "agnes1ana2",
+      database: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
     },
     migrations: {
       directory: "./src/migrations",
@@ -17,9 +17,9 @@ module.exports = {
   testing: {
     client: "pg",
     connection: {
-      database: "serverless",
-      user: "Win10",
-      password: "agnes1ana2",
+      database: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
     },
     migrations: {
       directory: "./src/migrations",
@@ -30,9 +30,9 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      database: "serverless",
-      user: "Win10",
-      password: "agnes1ana2",
+      database: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
     },
     migrations: {
       directory: "./src/migrations",

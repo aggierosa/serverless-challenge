@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import ReadPokemon from "../../../model/pokemons/readPoke";
 import { formatJSONResponse } from "../../../libs/api-gateway";
 import { middyfy } from "../../../libs/lambda";
-import { dbConnection } from "../../../model/database";
+import { dbConnection } from "../../../model/connection";
 
 export const getting = middyfy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
