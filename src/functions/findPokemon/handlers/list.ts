@@ -12,12 +12,12 @@ export const getting = middyfy(
       const foundPokemons = await readPoke.readAll();
 
       return formatJSONResponse({
-        status: 200,
+        statusCode: 200,
         message: foundPokemons,
       });
     } catch (e) {
       return formatJSONResponse({
-        status: 500,
+        statusCode: 500,
         message: e,
       });
     }

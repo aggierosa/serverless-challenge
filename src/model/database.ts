@@ -1,5 +1,3 @@
-import { otrsConnectionDB } from "../shared/secrets";
-
 export async function dbConnection() {
   try {
     // const parseAuth = await otrsConnectionDB();
@@ -7,11 +5,11 @@ export async function dbConnection() {
     return require("knex")({
       client: "pg",
       connection: {
-        host: "localhost",
-        user: "Win10",
-        password: "agnes1ana2",
-        database: "serverless",
-        port: 5432,
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_NAME,
+        port: process.env.DB_PORT,
       },
     });
   } catch (err) {

@@ -6,7 +6,7 @@ import { createPoke, getPokemon, getAllPokemon } from "@functions/findPokemon";
 dotenv.config({ path: __dirname + "/.env.development" });
 
 const serverlessConfiguration: AWS = {
-  service: "process.env.API_NAME",
+  service: "serverless-challenge",
   useDotenv: true,
   frameworkVersion: "3",
   plugins: [
