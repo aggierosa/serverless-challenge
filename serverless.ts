@@ -40,9 +40,10 @@ const serverlessConfiguration: AWS = {
     },
     webpack: {
       webpackConfig: "./webpack.config.js",
-      includeModules: true,
+      includeModules: { forceInclude: ["pg"] },
       useChildProcesses: true,
     },
+    webpackIncludeModules: ["pg"],
   },
 };
 

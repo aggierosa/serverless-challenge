@@ -4,9 +4,9 @@ import * as dotenv from "dotenv";
 export async function dbConnection() {
   try {
     dotenv.config();
-    console.log("daishdiughdua12131341444");
+
     const connectionDB = require("knex")({
-      client: "pg",
+      client: "postgresql",
       connection: {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
@@ -15,8 +15,6 @@ export async function dbConnection() {
         port: process.env.DB_PORT,
       },
     });
-
-    console.log("daishdiughdua");
 
     return connectionDB;
   } catch (err) {
