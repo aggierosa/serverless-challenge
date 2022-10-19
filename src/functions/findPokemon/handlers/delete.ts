@@ -12,24 +12,16 @@ export const deleting = middyfy(
 
       const betterPokename = pokename.name;
 
-      // const readPoke = new ReadPokemon(await dbConnection());
-
-      // const foundPokemon = await readPoke.readByName(betterPokename);
-
-      // if (foundPokemon.length < 0) {
-      //   return formatJSONResponse({
-      //     statusCode: 400,
-      //     message: "Pokemon does not exist",
-      //   });
-      // }
-
       const deletion = new DeletePokemon(await dbConnection());
-
-      // console.log({ deletion });
 
       const deleted = await deletion.delete(betterPokename);
 
-      console.log({ deleted });
+      if (deleted == 0) {
+        return formatJSONResponse({
+          statusCode: 500,
+          message: "Pokemon not found!",
+        });
+      }
 
       return formatJSONResponse({
         statusCode: 200,
