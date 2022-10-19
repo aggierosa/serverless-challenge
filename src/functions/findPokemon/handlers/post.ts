@@ -11,13 +11,10 @@ export const creating = middyfy(
     try {
       const pokename: any = event.pathParameters;
 
-      console.log({ pokename });
-
       const betterPokename = pokename.name;
-      console.log({ betterPokename });
 
-      const foundPokemon: any = await getPoke(betterPokename);
-      console.log({ foundPokemon });
+      const pokemonData: any = await getPoke(betterPokename);
+
       // ERRO aqui ----
 
       // const parseBody = JSON.parse(foundPokemon.body).status;
@@ -35,9 +32,7 @@ export const creating = middyfy(
 
       const existentPokemon = await readPoke.readByName(betterPokename);
 
-      console.log({ existentPokemon });
-
-      if (existentPokemon.lenght > 0) {
+      if (existentPokemon.length > 0) {
         return formatJSONResponse({
           statusCode: 400,
           message: "Pokemon already exists on Database",
@@ -46,9 +41,7 @@ export const creating = middyfy(
 
       const creation = new CreatePokemon(await dbConnection());
 
-      const creating = await creation.create(foundPokemon);
-
-      console.log(creating);
+      await creation.create(pokemonData);
 
       return formatJSONResponse({
         statusCode: 200,

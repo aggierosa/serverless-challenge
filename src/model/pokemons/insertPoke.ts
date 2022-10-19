@@ -11,7 +11,12 @@ export default class CreatePokemon {
 
   async create(body: pokemonTyped) {
     return this.db
-      .insert({ name: body.name, order: body.order })
+      .insert({
+        name: body.name,
+        id: body.id,
+        image: body.image,
+        description: body.description,
+      })
       .into(this.table);
   }
 }

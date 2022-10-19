@@ -21,3 +21,17 @@ export const getAllPokemon = formatRoute(
   "get",
   "get/pokemon"
 );
+
+export const deletePokemon = formatRoute(
+  handlerPath(__dirname),
+  "delete.deleting",
+  "delete",
+  "delete/pokemon/{name}"
+);
+
+export const updatePokemon = formatRoute(
+  handlerPath(__dirname),
+  "update.updating",
+  "patch",
+  "update/pokemon/{name}"
+);

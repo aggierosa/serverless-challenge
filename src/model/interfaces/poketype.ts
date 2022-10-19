@@ -1,4 +1,6 @@
 export type pokemonTyped = {
   name: string;
-  order: number;
+  id: number;
+  description: string;
+  image: string;
 };
